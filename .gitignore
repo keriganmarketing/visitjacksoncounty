@@ -1,0 +1,12 @@
+.DS_Store
+.env
+.idea
+.vagrant
+Homestead.json
+Homestead.yaml
+node_modules
+npm-debug.log
+package-lock.json
+Vagrantfile
+composer.lock
+public/uploads/
