@@ -7,16 +7,16 @@ namespace Composer\Autoload;
 class ComposerStaticInitf5e1c907962da6446c708da6ae2c6ad5
 {
     public static $files = array (
-        '320cde22f66dd4f5d3fd621d3e88b98f' => __DIR__ . '/..' . '/symfony/polyfill-ctype/bootstrap.php',
         '0e6d7bf4a5811bfa5cf40c5ccd6fae6a' => __DIR__ . '/..' . '/symfony/polyfill-mbstring/bootstrap.php',
+        '320cde22f66dd4f5d3fd621d3e88b98f' => __DIR__ . '/..' . '/symfony/polyfill-ctype/bootstrap.php',
+        '25072dd6e2470089de65ae7bf11d3109' => __DIR__ . '/..' . '/symfony/polyfill-php72/bootstrap.php',
+        '667aeda72477189d0494fecd327c3641' => __DIR__ . '/..' . '/symfony/var-dumper/Resources/functions/dump.php',
         '72579e7bd17821bb1321b87411366eae' => __DIR__ . '/..' . '/illuminate/support/helpers.php',
         '7b11c4dc42b3b3023073cb14e519683c' => __DIR__ . '/..' . '/ralouphie/getallheaders/src/getallheaders.php',
-        '25072dd6e2470089de65ae7bf11d3109' => __DIR__ . '/..' . '/symfony/polyfill-php72/bootstrap.php',
         'c964ee0ededf28c96ebd9db5099ef910' => __DIR__ . '/..' . '/guzzlehttp/promises/src/functions_include.php',
         'a0edc8309cc5e1d60e3047b5df6b7052' => __DIR__ . '/..' . '/guzzlehttp/psr7/src/functions_include.php',
         '17d016dc52a631c1e74d2eb8fdd57342' => __DIR__ . '/..' . '/laravel/helpers/src/helpers.php',
         '841f98c5d948ce534a6f87abe5b50614' => __DIR__ . '/..' . '/roots/wp-password-bcrypt/wp-password-bcrypt.php',
-        '667aeda72477189d0494fecd327c3641' => __DIR__ . '/..' . '/symfony/var-dumper/Resources/functions/dump.php',
         '37a3dc5111fe8f707ab4c132ef1dbc62' => __DIR__ . '/..' . '/guzzlehttp/guzzle/src/functions_include.php',
         'a21e70ca1cdeca5aa284b987d10b88cd' => __DIR__ . '/..' . '/wordplate/framework/src/helpers.php',
     );
@@ -697,6 +697,7 @@ class ComposerStaticInitf5e1c907962da6446c708da6ae2c6ad5
         'Illuminate\\View\\Compilers\\Concerns\\CompilesComponents' => __DIR__ . '/..' . '/illuminate/view/Compilers/Concerns/CompilesComponents.php',
         'Illuminate\\View\\Compilers\\Concerns\\CompilesConditionals' => __DIR__ . '/..' . '/illuminate/view/Compilers/Concerns/CompilesConditionals.php',
         'Illuminate\\View\\Compilers\\Concerns\\CompilesEchos' => __DIR__ . '/..' . '/illuminate/view/Compilers/Concerns/CompilesEchos.php',
+        'Illuminate\\View\\Compilers\\Concerns\\CompilesErrors' => __DIR__ . '/..' . '/illuminate/view/Compilers/Concerns/CompilesErrors.php',
         'Illuminate\\View\\Compilers\\Concerns\\CompilesHelpers' => __DIR__ . '/..' . '/illuminate/view/Compilers/Concerns/CompilesHelpers.php',
         'Illuminate\\View\\Compilers\\Concerns\\CompilesIncludes' => __DIR__ . '/..' . '/illuminate/view/Compilers/Concerns/CompilesIncludes.php',
         'Illuminate\\View\\Compilers\\Concerns\\CompilesInjections' => __DIR__ . '/..' . '/illuminate/view/Compilers/Concerns/CompilesInjections.php',

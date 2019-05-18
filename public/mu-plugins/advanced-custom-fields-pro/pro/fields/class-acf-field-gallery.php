@@ -37,13 +37,6 @@ class acf_field_gallery extends acf_field {
 			'mime_types'	=> '',
 			'insert'		=> 'append'
 		);
-		$this->l10n = array(
-			'select'		=> __("Add Image to Gallery",'acf'),
-			'edit'			=> __("Edit Image",'acf'),
-			'update'		=> __("Update Image",'acf'),
-			'uploadedTo'	=> __("Uploaded to this post",'acf'),
-			'max'			=> __("Maximum selection reached",'acf')
-		);
 		
 		
 		// actions
@@ -56,6 +49,28 @@ class acf_field_gallery extends acf_field {
 		add_action('wp_ajax_acf/fields/gallery/get_sort_order',				array($this, 'ajax_get_sort_order'));
 		add_action('wp_ajax_nopriv_acf/fields/gallery/get_sort_order',		array($this, 'ajax_get_sort_order'));
 		
+	}
+	
+	/*
+	*  input_admin_enqueue_scripts
+	*
+	*  description
+	*
+	*  @type	function
+	*  @date	16/12/2015
+	*  @since	5.3.2
+	*
+	*  @param	$post_id (int)
+	*  @return	$post_id (int)
+	*/
+	
+	function input_admin_enqueue_scripts() {
+		
+		// localize
+		acf_localize_text(array(
+		   	'Add Image to Gallery'		=> __('Add Image to Gallery', 'acf'),
+			'Maximum selection reached'	=> __('Maximum selection reached', 'acf'),
+	   	));
 	}
 	
 	
@@ -85,7 +100,9 @@ class acf_field_gallery extends acf_field {
    		
 		
 		// validate
-		if( !wp_verify_nonce($options['nonce'], 'acf_nonce') ) die();
+		if( !acf_verify_ajax() ) {
+			die();
+		}
 		
 		
 		// bail early if no id
@@ -419,7 +436,8 @@ class acf_field_gallery extends acf_field {
 		// get posts
 		$posts = acf_get_posts(array(
 			'post_type'	=> 'attachment',
-			'post__in'	=> $post__in
+			'post__in'	=> $post__in,
+			'update_post_meta_cache' => true
 		));
 		
 		
@@ -826,60 +844,24 @@ class acf_field_gallery extends acf_field {
 	
 	function update_value( $value, $post_id, $field ) {
 		
-		// bail early if no value
-		if( empty($value) || !is_array($value) ) return false;
-		
-		
-		// loop
-		foreach( $value as $i => $v ) {
-			
-			$value[ $i ] = $this->update_single_value( $v );
-			
+		// Bail early if no value.
+		if( empty($value) ) {
+			return $value;
 		}
-				
 		
-		// return
+		// Convert to array.
+		$value = acf_array( $value );
+		
+		// Format array of values.
+		// - ensure each value is an id.
+		// - Parse each id as string for SQL LIKE queries.
+		$value = array_map('acf_idval', $value);
+		$value = array_map('strval', $value);
+		
+		// Return value.
 		return $value;
 		
-	}
-	
-	
-	/*
-	*  update_single_value()
-	*
-	*  This filter is appied to the $value before it is updated in the db
-	*
-	*  @type	filter
-	*  @since	3.6
-	*  @date	23/01/13
-	*
-	*  @param	$value - the value which will be saved in the database
-	*  @param	$post_id - the $post_id of which the value will be saved
-	*  @param	$field - the field array holding all the field options
-	*
-	*  @return	$value - the modified value
-	*/
-	
-	function update_single_value( $value ) {
-		
-		// numeric
-		if( is_numeric($value) ) return $value;
-		
-		
-		// array?
-		if( is_array($value) && isset($value['ID']) ) return $value['ID'];
-		
-		
-		// object?
-		if( is_object($value) && isset($value->ID) ) return $value->ID;
-		
-		
-		// return
-		return $value;
-		
-	}
-
-	
+	}	
 }
 
 

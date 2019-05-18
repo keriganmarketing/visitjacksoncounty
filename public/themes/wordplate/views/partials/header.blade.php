@@ -1,4 +1,7 @@
 <header class="top">
+    <div class="mobile-mini-nav d-sm-none bg-primary text-white text-center" >
+        <a href="/visitors-guide/">visitor’s guide</a>   |  <a href="/contact/" >Contact</a>  |  <a @click="openSearch()" >Search <i class="fa fa-search"></i></a>
+    </div>
     <div role="navigation" class="topnav navbar navbar-expand-xl" >
         <div class="container d-flex justify-content-center justify-content-md-between">
             <div class="text-center" >
@@ -16,47 +19,28 @@
                     </a>
                 @else
                     <a class="logo d-flex mx-auto align-items-center display-4" href="/">
-                        <svg version="1.1" width="25" height="25" xmlns="http://www.w3.org/2000/svg"    xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
-                            viewBox="0 0 54 54" style="enable-background:new 0 0 54 54;" fill="currentColor" class="d-block mr-2" xml:space="preserve">
-                            <circle cx="7" cy="47" r="7"/>
-                            <circle cx="27" cy="47" r="7"/>
-                            <circle cx="47" cy="47" r="7"/>
-                            <circle cx="7" cy="27" r="7"/>
-                            <circle cx="27" cy="27" r="7"/>
-                            <circle cx="47" cy="27" r="7"/>
-                            <circle cx="7" cy="7" r="7"/>
-                            <circle cx="27" cy="7" r="7"/>
-                            <circle cx="47" cy="7" r="7"/>
-                        </svg>
-                        WP<strong>GEN</strong>
-                        {{-- {{ get_bloginfo() }} --}}
+                        {{ get_bloginfo() }}
                     </a>
                 @endif
             </div>
             
-            <div class="flex-grow-1">
-                <div class="contact-nav py-2">
-                    <a class="mail top-button" href="mailto:{{ get_field('email', 'option') }}"><i class="fa fa-envelope d-inline-block mx-2" aria-hidden="true"></i><span class="d-none d-md-inline-block">{{ get_field('email', 'option') }}</span></a>
-                    <a class="call top-button" href="tel:{{ get_field('phone', 'option') }}"><i class="fa fa-phone d-inline-block mx-2" aria-hidden="true"></i><span class="d-none d-md-inline-block">{{ get_field('phone', 'option') }}</span></a>
-                    <button v-on:click="toggleMenu" class="d-xl-none btn btn-secondary btn-sm" type="button" data-toggle="collapse" data-target="#mobilemenu" aria-controls="navbarsExampleDefault" aria-expanded="false" aria-label="Toggle navigation">
-                        MENU <i
-                                class="fa" 
-                                v-bind:class="{
-                                    'fa-bars': !mobileMenuOpen,
-                                    'fa-times': mobileMenuOpen
-                                }"
-                                aria-hidden="true"
-                            ></i>
-                    </button>
+            <div class="flex-grow-1 d-none d-sm-block ">
+                <div class="mini-navigation d-flex w-100" >
+                    <main-menu v-bind:main-nav="{{ website_menu('mini-navigation') }}" class="navbar-nav mx-auto mr-md-0"></main-menu>
                 </div>
-                
-                <div class="main-navigation collapse navbar-collapse">
-                    <main-menu v-bind:main-nav="{{ website_menu('main-navigation') }}" class="navbar-nav ml-auto"></main-menu>
+                <div class="main-navigation d-flex w-100">
+                    <main-menu v-bind:main-nav="{{ website_menu('main-navigation') }}" class="navbar-nav mx-auto mr-md-0"></main-menu>
                 </div>
             </div>
         </div>
     </div>
+    <div class="mobile-main-nav d-flex w-100 d-sm-none bg-primary text-white text-center" >
+        <a href="#" class="nav-item col py-2 text-white" >Shop</a>
+        <a href="#" class="nav-item col py-2 text-white" >Dine</a>
+        <a href="#" class="nav-item col py-2 text-white" >Play</a>
+        <a href="#" class="nav-item col py-2 text-white" >Stay</a>
+    </div>
+    <div class="gradient gradient-one"></div>
 </header>
-<div v-if="mobileMenuOpen" class="mobile-menu align-items-center" ref="mobileMenuContainer" v-bind:class="{ 'open': this.mobileMenuOpen }" >
-    <mobile-menu v-bind:mobile-nav="{{ website_menu('mobile-navigation') }}" class="navbar-nav m-auto" ></mobile-menu>
+<div v-if="playMenuOpen" class="mobile-menu align-items-center bg-primary" >
 </div>

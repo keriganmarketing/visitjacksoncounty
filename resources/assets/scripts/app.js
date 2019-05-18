@@ -22,8 +22,31 @@ Vue.use(VueMasonryPlugin)
 import PortalVue from 'portal-vue';
 Vue.use(PortalVue);
 
-import VueCarousel from 'vue-carousel';
-Vue.use(VueCarousel);
+import VueParallaxJs from 'vue-parallax-js'
+Vue.use(VueParallaxJs)
+
+import VueLazyload from 'vue-lazyload';
+Vue.use(VueLazyload, {
+    preLoad: 1.1,
+    error: '',
+    loading: '',
+    attempt: 1
+})
+
+import vueScrollto from 'vue-scrollto'
+Vue.use(vueScrollto, {
+    container: "body",
+    duration: 1000,
+    easing: "ease",
+    offset: -90,
+    force: true,
+    cancelable: true,
+    onStart: false,
+    onDone: false,
+    onCancel: false,
+    x: false,
+    y: true
+})
 
 const app = new Vue({
     el: '#app',
@@ -35,8 +58,9 @@ const app = new Vue({
         isScrolling: false,
         scrollPosition: 0,
         footerStuck: false,
-        mobileMenuOpen: false,
-        galleryIsOpen: false
+        playMenuOpen: false,
+        galleryIsOpen: false,
+        mounted: false
     },
 
     methods: {
@@ -44,8 +68,8 @@ const app = new Vue({
             this.scrollPosition = window.scrollY;
             this.isScrolling = this.scrollPosition > 40;
         },
-        toggleMenu() { 
-            this.mobileMenuOpen = ! this.mobileMenuOpen;
+        toggleplayMenu() { 
+            this.playMenuOpen = ! this.playMenuOpen;
         },
         openGallery() {
             this.galleryIsOpen = true;
@@ -61,6 +85,7 @@ const app = new Vue({
         this.windowHeight = window.innerHeight;
         this.windowWidth = window.innerWidth;
         this.handleScroll();
+        this.mounted = true;
     },
 
     created () {

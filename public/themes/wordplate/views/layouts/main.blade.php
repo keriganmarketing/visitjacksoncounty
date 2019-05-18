@@ -14,7 +14,8 @@
             v-bind:class="{
                 'full-height': footerStuck, 
                 'scrolling': isScrolling,
-                'mobile-menu-open': mobileMenuOpen 
+                'mobile-menu-open': playMenuOpen,
+                'mounted': mounted 
             }">
             @include('partials.header')
 

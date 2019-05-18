@@ -47,8 +47,6 @@ class ThemeControl
     protected function enableModules()
     {
         $this->enableContactInfo();
-
-        new Includes\Modules\ContactForm();
         
         if (get_theme_mod('enable_team')){
             $this->enableTeam();

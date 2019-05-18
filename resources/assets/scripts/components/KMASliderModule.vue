@@ -9,6 +9,7 @@
                 <div
                     v-for="(slide, index) in sliderData" :key="index" 
                     class="slide" 
+                    v-parallax="-.1"
                     :class="{
                         'active': index == activeSlide
                     }"

@@ -327,11 +327,15 @@ class Str
      */
     public static function replaceArray($search, array $replace, $subject)
     {
-        foreach ($replace as $value) {
-            $subject = static::replaceFirst($search, $value, $subject);
+        $segments = explode($search, $subject);
+
+        $result = array_shift($segments);
+
+        foreach ($segments as $segment) {
+            $result .= (array_shift($replace) ?? $search).$segment;
         }
 
-        return $subject;
+        return $result;
     }
 
     /**
@@ -722,9 +726,17 @@ class Str
                     ['х', 'Х', 'щ', 'Щ', 'ъ', 'Ъ', 'ь', 'Ь'],
                     ['h', 'H', 'sht', 'SHT', 'a', 'А', 'y', 'Y'],
                 ],
+                'da' => [
+                    ['æ', 'ø', 'å', 'Æ', 'Ø', 'Å'],
+                    ['ae', 'oe', 'aa', 'Ae', 'Oe', 'Aa'],
+                ],
                 'de' => [
                     ['ä',  'ö',  'ü',  'Ä',  'Ö',  'Ü'],
                     ['ae', 'oe', 'ue', 'AE', 'OE', 'UE'],
+                ],
+                'ro' => [
+                    ['ă', 'â', 'î', 'ș', 'ț', 'Ă', 'Â', 'Î', 'Ș', 'Ț'],
+                    ['a', 'a', 'i', 's', 't', 'A', 'A', 'I', 'S', 'T'],
                 ],
             ];
         }

@@ -2,9 +2,9 @@
 Contributors: bfintal, gambitph, freemius
 Tags: gutenberg, block, blocks, block editor, gutenberg blocks, page builder, editor, wordpress 5.0
 Requires at least: 4.8
-Tested up to: 5.1
+Tested up to: 5.2
 Requires PHP: 5.3
-Stable tag: 1.13.1
+Stable tag: 1.15.1
 License: GPLv3
 License URI: https://www.gnu.org/licenses/gpl-3.0.html
 
@@ -21,6 +21,7 @@ Stackable provides feature-rich blocks that gives you more design options for yo
 ## Kick-ass blocks
 
 - Container Block - [View Block](https://wpstackable.com/container-block/)
+- Separator Block - [View Block](https://wpstackable.com/separator-block/)
 - Posts Block - [View Block](https://wpstackable.com/blog-posts-block/)
 - Feature Grid Block — [View Block](https://wpstackable.com/feature-grid-block/)
 - Accordion Block - [View Block](https://wpstackable.com/accordion-block/)
@@ -45,6 +46,8 @@ Stackable provides feature-rich blocks that gives you more design options for yo
 
 ### News Article Updates
 
+- [v1.15 Separators Are Here](https://wpstackable.com/blog/separators-are-here/)
+- [v1.14 Video Backgrounds & Background Gradients](https://wpstackable.com/blog/video-backgrounds-background-gradients/)
 - [v1.13 Introducing Stackable Premium](https://wpstackable.com/blog/introducing-stackable-premium/)
 - [v1.12 Stackable Is Now in GitHub](https://wpstackable.com/blog/stackable-is-now-in-github/)
 - [v1.11 Huge Updates Across All Blocks](https://wpstackable.com/blog/huge-updates-across-all-blocks/)
@@ -118,6 +121,44 @@ Nope. Stackable only works with Gutenberg, the new WordPress editor.
 You will have to redo all your blocks
 
 == Changelog ==
+
+= 1.15.1 =
+* Fixed: Separator block clipping when full-width
+* Fixed: Typo in background image help text
+* Fixed: Blocks become invalid if they have a button that opens in a new tab
+* Change: Removed promotional popup
+
+= 1.15.0 =
+[Separators Are Here](https://wpstackable.com/blog/separators-are-here/)
+
+* New: Separator block with 10 designs
+* Fixed: IE11 stretching images vertically in the Feature block
+* Change: Replaced removed small Premium notices with 3-dot toggle buttons
+
+= 1.14.0 =
+[Video Backgrounds & Background Gradients](https://wpstackable.com/blog/video-backgrounds-background-gradients/)
+
+* New: Video backgrounds
+* New: Background gradient colors
+* New: Custom CSS tab for all blocks (Premium)
+* Fixed: Not setting a subprice hides the price in the Pricing box block
+* Fixed: Blockquote block highlight design not being applied correctly.
+
+= 1.13.3 =
+* Fixed: Removed preload & prefetch since they're causing problems in Safari and Firefox. Let's leave this to the optimization plugins.
+* Fixed: Security fix
+* Change: Removed small Premium notices from the editor
+
+= 1.13.2 =
+* New: Added modal slider for Premium "Learn More" buttons
+* New: Scripts & style loading optimization: CSS files are now preloaded / prefetched, JS files are now deferred
+* New: Added Contact Us & Support Forum in admin menu
+* Fixed: Divider Elementor margin conflict
+* Fixed: Feature Block content doesn't force center on mobile
+* Fixed: Duplicated notifications can show up.
+* Fixed: Blog Posts block List design shows incorrectly in the editor.
+* Fixed: Click-holding on an icon doesn't select the icon
+* Fixed: Remove Icon list bullets, compatibility for Genesis theme
 
 = 1.13.1 =
 * New: Added news section in the welcome screen

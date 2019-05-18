@@ -7,12 +7,13 @@ html {
     // Button overrides
     .btn {
         text-transform: uppercase;
-        font-size: 1em;
-        line-height: 1.5rem;
-        font-weight: $font-weight-bold;
+        font-size: 1.8em;
+        line-height: 2.2rem;
+        padding: 1rem 1.75rem .75rem;
+        font-family: 'Bebas Neue', sans-serif;
         
         &.btn-lg {
-            border-width: 2px;
+            border-width: 2px !important;
         }
     }
 
@@ -45,22 +46,6 @@ body {
         .site-wrapper {
             display: flex;
             flex-direction: column;
-
-            .headshot {
-                img {
-                    width: 180px;
-                    height: 180px;
-                    margin-top:-90px;
-                    position: relative;
-                    z-index: 3;
-
-                    @media screen and (min-width: 768px){
-                        width: 220px;
-                        height: 220px;
-                        margin-top:-110px;
-                    }
-                }
-            }
             
             main {
                 background-color: $white;
@@ -69,6 +54,13 @@ body {
             
             &.full-height { 
                 height: 100vh;
+            }
+        }
+
+        .container-fluid {
+            @media screen and (min-width: 1440px){
+                width: 1400px;
+                margin: 0 auto;
             }
         }
 
@@ -82,124 +74,305 @@ body {
     z-index: 6;
     position: fixed;
     width: 100%;
+    background-color: $white;
+
+    .mobile-mini-nav {
+        margin-top: 0;
+        visibility: visible;
+        transition: height linear .25s;
+        height: 40px;
+
+        a {
+            font-family: 'Bebas Neue', sans-serif;
+            color: $white;
+            font-size: 1.5em;
+            display: inline-block;
+            padding: .5rem;
+            line-height: 1rem;
+        }
+    }
 
     .logo {
         color: $white;
         justify-content: center;
         padding: 1rem 0;
         margin: 0 auto;
+        height: 98px;
+        transition: all linear .25s;
+        overflow: hidden;
     }
 
-    .contact-nav {
-        display: flex;
-        justify-content: center;
-
-        @media screen and (min-width: 576px){
-            justify-content: flex-end;
-        }
+    .mobile-main-nav {
 
         a {
-            display: inline-block;
-            padding: .5rem;
-            margin: 0 .5rem 0 0;
-            background-color: $primary;
-            font-size: 1rem;
-            color: $white;
-
-            @media screen and (min-width: 993px) {
-                color: $primary;
-                background-color: transparent;
-            }
+            font-family: 'Bebas Neue', sans-serif;
+            font-size: 1.75em;
+            text-decoration: none;
         }
+
+        a:nth-child(1) { background-color: #a39200; }
+        a:nth-child(2) { background-color: #b63a52; }
+        a:nth-child(3) { background-color: #865762; }
+        a:nth-child(4) { background-color: #b1452b; }
     }
 
     .topnav {
         height: 100%;
+        padding: 0;
 
-        a.nav-link {
-            color: $white;
-            padding: .25rem .75rem;
+        .mini-navigation {
+            .navbar-nav {
+                flex-direction: row !important;
 
-            &:hover {
-                background-color: rgba(0,0,0,.25);
-                border-radius: .25rem;
-            }
-        }
-        .dropdown-menu {
-            border: 0;
-            border-top: .5rem solid $secondary;
-            margin-top: -1px;
-            border-radius: 0;
-            padding: 0;
-            background-color: $dark;
-            width: 230px; 
-
-            a.dropdown-item {
-                color: #FFF;
-                background-color: transparent;
-                padding: 1rem;
-
-                &:hover {
+                a.nav-link {
+                    font-family: 'Bebas Neue', sans-serif;
+                    font-size: 1.3em;
+                    padding: .25rem .5rem;
                     color: $primary;
-                    background-color: $dark !important;
+                }
+            }
+
+        }
+
+        .main-navigation {
+            .navbar-nav {
+                flex-direction: row !important;
+
+                a.nav-link {
+                    transition: color .25 linear;
+                    font-family: 'Bebas Neue', sans-serif;
+                    font-size: 1.9em;
+                    padding: .5rem 1.75rem;
+                    background: transparent;
+                    color: $dark;
+
+                    &:hover {
+                        color: $primary;
+                    }
+
+                }
+
+
+            }
+            .dropdown-menu {
+                border: 0;
+                border-top: .5rem solid $secondary;
+                margin-top: -1px;
+                border-radius: 0;
+                padding: 0;
+                background-color: $dark;
+                width: 230px; 
+
+                a.dropdown-item {
+                    color: #FFF;
+                    background-color: transparent;
+                    padding: 1rem;
+
+                    &:hover {
+                        color: $primary;
+                        background-color: $dark !important;
+                    }
                 }
             }
         }
     }
 }
 
-// Navigation
-ul.navbar-nav {
-    list-style: none;
+.gradient {
+    min-height: .35rem;
+    position: relative;
+    z-index: inherit;
+    box-shadow: 0 0 5px rgba(0,0,0,.4);
+
+    &.gradient-one {
+        background-color: $lime;
+        background: -moz-linear-gradient(left,$lime 0%, $teal 100%);
+        background: -webkit-linear-gradient(left,$lime 0%,$teal 100%);
+        background: linear-gradient(to right,$lime 0%,$teal 100%);
+        filter: progid:DXImageTransform.Microsoft.gradient( startColorstr=$lime, endColorstr=$teal,GradientType=1 );
+    }
+
+    &.gradient-two {
+        background-color: $teal;
+        background: -moz-linear-gradient(left,$teal 0%, $dteal 100%);
+        background: -webkit-linear-gradient(left,$teal 0%,$dteal 100%);
+        background: linear-gradient(to right,$teal 0%,$dteal 100%);
+        filter: progid:DXImageTransform.Microsoft.gradient( startColorstr=$dteal, endColorstr=$dteal,GradientType=1 );
+    }
+
+    &.gradient-three {
+        background-color: $dteal;
+        background: -moz-linear-gradient(left,$dteal 0%, $blue 100%);
+        background: -webkit-linear-gradient(left,$dteal 0%,$blue 100%);
+        background: linear-gradient(to right,$dteal 0%,$blue 100%);
+        filter: progid:DXImageTransform.Microsoft.gradient( startColorstr=$dteal, endColorstr=$blue,GradientType=1 );
+    }
+
+    &.gradient-four {
+        background-color: $blue;
+        background: -moz-linear-gradient(left,$blue 0%, $cyan 100%);
+        background: -webkit-linear-gradient(left,$blue 0%,$cyan 100%);
+        background: linear-gradient(to right,$blue 0%,$cyan 100%);
+        filter: progid:DXImageTransform.Microsoft.gradient( startColorstr=$blue, endColorstr=$cyan,GradientType=1 );
+    }
+
+    &.gradient-five {
+        background-color: $cyan;
+        background: -moz-linear-gradient(left,$cyan 0%, $dteal 100%);
+        background: -webkit-linear-gradient(left,$cyan 0%,$dteal 100%);
+        background: linear-gradient(to right,$cyan 0%,$dteal 100%);
+        filter: progid:DXImageTransform.Microsoft.gradient( startColorstr=$cyan, endColorstr=$dteal,GradientType=1 );
+    }
+
+    &.gradient-six {
+        background-color: $teal;
+        background: -moz-linear-gradient(left,$teal 0%, $forest 100%);
+        background: -webkit-linear-gradient(left,$teal 0%,$forest 100%);
+        background: linear-gradient(to right,$teal 0%,$forest 100%);
+        filter: progid:DXImageTransform.Microsoft.gradient( startColorstr=$teal, endColorstr=$forest,GradientType=1 );
+    }
+
+}
+
+@media screen and (max-width: 575px){
+    .scrolling {
+        .mobile-mini-nav {
+            visibility: hidden !important;
+            height: 0 !important;
+        }
+
+        .logo {
+            height: 0 !important;
+            padding: 0 !important;
+
+            img {
+                visibility: hidden;
+            }
+        }
+    }
+}
+
+.down {
+    width: 100%;
+    position: relative;
+    z-index: 2;
     display: flex;
+    justify-content: center;
+    margin-top: -4rem;
+    margin: -4rem auto 2rem;
 
-    li {
-        a {
-            padding: .5rem;
-            color: $dark;
-            text-transform: uppercase;
-            text-decoration: none;
-            font-weight: 600;
-            font-size: 13px;
-            transition: all .5s linear;
-        }
+    a {
+        height: 40px;
+        width: 40px;
+        border-radius: 50%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        color: $lime !important;
+        background-color: $white;
+        font-size: 1.5em;
+        cursor: pointer;
     }
 }
 
-.mobile-menu-open,
-.scrolling {
-    .top {
-        background-color: $navy;
+.section {
+    position: relative;
+    z-index: inherit;
+    background-size: cover;
+    background-position: center;
 
-        .topnav {
-            list-style: none;
-            display: flex;
-
-        }
-
+    .section-content {
+        position: relative;
+        z-index: 1;
     }
 
-    .mobile-menu {
-        background: $primary;
+    .section-button {
+        padding: 2rem 0;
+        text-align: center;
+
+        .btn {
+            box-shadow: 0 0 .75rem rgba(0,0,0,.2);
+            color: $white;
+        }
+    }
+
+    .section-background {
+        background-size: cover;
+        background-position: center;
+        position: absolute;
+        top: 0; bottom: 0;
+        left: 0; right: 0;
+        z-index: 0;
+        height: 130%;
     }
 }
 
 
+// Mini Event
+.event {
+    margin: 0;
+    transition: all linear .25s;
+    border: none !important;
 
-.quick-search {
-    text-align: left;
+    &:hover {
+        margin-top: -.5rem;
+        margin-bottom: .5rem;
+    }
 
-    select {
-        min-width: 210px;
-        box-shadow: 0 0 1rem rgba(0,0,0,.1);
+    .event-image {
+        background-size: cover;
+        background-position: center;
+    }
+
+    .card-title {
+        font-family: 'Bebas Neue', sans-serif;
+        color: $magenta;
+        font-size: 1.4em;
+        line-height: 1.1em;
+    }
+
+    .card-date, .card-time {
+        font-size: .9em;
+        color: $dark;
+    }
+}
+
+// Events Section
+.events-section {
+    background-color: $dteal;
+    padding: 0 0 2rem;
+
+    .heading {
+        text-align: center;
+        font-family: 'Bebas Neue', sans-serif;
+        font-size: 2.75em;
+        text-shadow: 2px 2px 0 rgba(0,0,0,.7);
+        padding-top: 2rem;
     }
 
     .btn {
-        box-shadow: 0 0 1rem rgba(0,0,0,.1);
-    }
+        background-color: $transmagenta;
+        transition: background-color linear .25s;
 
-    .text-shadow {
-        text-shadow: 0 0 1rem rgba(0,0,0,.75);
+        &:hover {
+            background-color: $magenta;
+        }
+    }
+}
+
+.header-image {
+    &.support {
+        padding: 15rem 0 2rem;
+        width: 100%;
+
+        @media screen and (min-width: 768px){
+            padding: 10rem 0 2rem;
+        }
+
+        h1 {
+            text-align: center;
+            font-family: 'Rock Salt', serif;
+        }
     }
 }
 
@@ -210,12 +383,6 @@ main {
     article {
         padding: 2rem 0 1rem;
         text-align: left;
-        background-color: #FFF;
-
-        header {
-            padding-top: 3rem;
-            margin-bottom: 1rem;
-        }
 
         p, ul, ol {
             line-height: 1.8em;
@@ -230,6 +397,170 @@ main {
     }
 }
 
+// Home page body text
+.home-content {
+    background-color: #bdb401 !important;
+    padding: 2rem 0;
+
+    article {
+        padding: 0 !important;
+    }
+
+    h1 {
+        text-align: center;
+        font-family: 'Rock Salt', serif;
+        font-size: 1.95em;
+        text-shadow: 2px 2px 0 rgba(0, 0, 0, 0.1);
+        padding: 2rem 0 1rem;
+        color: $white;
+    }
+
+    .btn {
+        background-color: $transforest;
+        transition: background-color linear .25s;
+
+        &:hover {
+            background-color: $forest;
+        }
+    }
+
+}
+
+// Featured Venue Section
+.featured-venue-section {
+    background-color: $dark;
+    padding: 2rem 0 4rem;
+    overflow: hidden;
+
+    .featured-headline {
+        font-family: 'Rock Salt',serif;
+        color: #FFF;
+        font-size: 4.7em;
+        margin-top: 4rem;
+        text-shadow: 0 0 0.5rem rgba(0,0,0,.5);
+    }
+
+    .featured-venue-name {
+        color: #FFF;
+        font-family: 'Bebas Neue',sans-serif;
+        font-size: 1.95em;
+        margin-bottom: 4rem;
+    }
+
+    .btn {
+        background-color: $transmagenta;
+        transition: background-color linear .25s;
+
+        &:hover {
+            background-color: $magenta;
+        }
+    }
+}
+
+// Visitor's Guide Section
+.visitors-guide-section {
+    background-color: $dteal;
+    padding: 4rem 0;
+
+    .heading {
+        font-family: 'Bebas Neue', sans-serif;
+        color: #FFF;
+        font-size: 2.55rem;
+    }
+
+    .btn {
+
+        .fa {
+            font-size: .9em;
+            margin-right: .5rem;
+            color: $green;
+            vertical-align: middle;
+        }
+    }
+}
+
+// Getting Here Section
+.getting-here-section {
+    background-color: #b5d9d9;
+    padding: 2rem 0 0;
+
+    .section-content {
+        position: relative;
+        z-index: 2;
+        padding: 7rem 0;
+
+        @media screen and (min-width: 576px){
+            padding: 0 0 1rem;
+        }
+
+        .heading {
+            font-family: 'Rock Salt', serif;
+            font-size: 2.5rem;
+            color: $dark;
+            margin: -7rem 0 8rem;
+
+            @media screen and (min-width: 576px){
+                margin: 0 0 .5rem;
+            }
+        }
+    
+        .client-name {
+            font-family: 'Bebas Neue', sans-serif;
+            color: $dark;
+            font-size: 1.8em;
+            width: 300px;
+            line-height: 1em;
+            margin: 1.25rem auto .5rem;
+        }
+
+        .btn {
+            background-color: $transmagenta;
+            transition: background-color linear .25s;
+            color: $white;
+    
+            &:hover {
+                background-color: $magenta;
+            }
+        }
+    }    
+
+    .florida {
+        background-repeat: no-repeat;
+        background-size: contain;
+        position: absolute;
+        z-index: 0;
+
+        @media screen and (min-width:576px){
+            position: relative;
+            margin: 0;
+        }
+
+        .map-arrow {
+            position: absolute;
+            width: 32%;
+            margin-top: 3rem;
+            margin-left: -2rem; 
+            display: none;
+
+            @media screen and (min-width:768px){
+                display: block;
+            }
+
+            @media screen and (min-width:1024px){
+                margin-top: 4rem;
+            }
+
+            @media screen and (min-width:1200px){
+                width: 37%;
+                margin-top: 5rem;
+                margin-left: -4rem;
+            }
+        }
+    }
+
+    
+}
+
 .status-update {
     a {
         color: $white;
@@ -242,13 +573,19 @@ main {
     background-size: cover;
     background-position: center;
     min-height: 150px;
-    overflow: hidden;
 
     .overlay {
         position: relative;
         height: 100%;
         width: 100%;
         z-index: 0;
+    }
+}
+
+// Map Styles
+.infowindow {
+    .btn {
+        padding: .5rem 1rem .25rem;
     }
 }
 
@@ -261,13 +598,15 @@ main {
     background-size: cover;
     background-position: center;
     display: flex;
-    align-items: center;
+    align-items: flex-end;
     justify-content: center;
-
-    // @media screen and (min-width: 1024px){
-    //     min-height: 550px;
-    // }
-
+    background-color: $teal;
+    visibility: hidden;
+    transition: all linear 1s;
+    
+    @media screen and (min-width: 360px) {
+        align-items: center;
+    }
 
     .overlay {
         position: fixed;
@@ -282,20 +621,65 @@ main {
         z-index: 2;
         justify-content: center;
         text-align: center;
+        margin-top: 2rem;
 
-        h2 {
+        @media screen and (min-width: 360px) {
+            margin-top: 7rem;
+        }
+
+        @media screen and (min-width: 576px) {
+            margin-top: -5rem;
+        }
+        
+        @media screen and (min-width: 768px) {
+            margin-top: -12rem;
+        }
+
+        p {
             color: $white;
             font-size: 2rem;
             line-height: 2rem;
             margin: 0;
             padding: 1rem 0 0;
-            text-shadow: 0 0 1rem rgba(0,0,0,.1);
+            text-shadow: 0 0 1rem rgba(0,0,0,.7);
+            font-family: 'Rock Salt', serif;
+
+            @media screen and (min-width: 576px) {
+                font-size: 2rem !important;
+                line-height: 2rem !important;
+            }
 
             @media screen and (min-width: 768px){
-                font-size: 3rem;
-                line-height: 3rem;
+                font-size: 4.7rem !important;
+                line-height: 3rem !important;
             }
         }
+
+        .wp-block-button {
+            padding: 1rem 1rem 3rem;
+
+            a.wp-block-button__link {
+                background-color: $transforest !important;
+                transition: all .5s linear; 
+                border: 2px solid $white;
+                font-family: 'Bebas Neue', sans-serif;
+                font-size: 2em;
+                padding-bottom: .5rem !important;
+                margin-top: 2rem;
+
+                &:hover {
+                    background-color: $forest !important;
+                    text-decoration: none;
+                }
+            }
+        }
+    }
+}
+
+.mounted {
+    .slider-container,
+    .main-header-image {
+        visibility: visible; 
     }
 }
 
@@ -336,73 +720,81 @@ main {
 
 // Feature Box Section
 .feature-box-section {
-    margin-top: -40vh;
     position: relative;
-
-    @media (min-width: 576px){
-        padding: 2rem 1rem;
-    }
+    border: 2px solid $white;
 
     .feature-box {
         padding: 2rem;
         background-size: cover;
         background-position: center;
         overflow: hidden;
-
-        @media (min-width: 768px){
-            padding: 3rem;
-        }
+        text-align: center;
+        border: 2px solid $white;
 
         .box-content {
             position: relative;
             z-index: 1;
+            color: $white;
+            text-decoration: none !important;
+            text-shadow: 2px 2px 2px rgba(0,0,0,.4);
         }
 
         .overlay {
+            opacity: .7;
+            transition: opacity linear 1s;
             position: absolute;
             top: 0;
             left: 0;
             right: 0;
             bottom: 0;
             z-index: 0;
+        }
 
-            @media (min-width: 768px){
-                top: 2rem;
-                left: 2rem;
-                right: 2rem;
-                bottom: 2rem;
+        .box-headline {
+            font-family: 'Bebas Neue', sans-serif;
+            font-size: 3em;
+            margin:0;
+            transition: all ease-out .25s;
+            line-height: 1em;
+
+            @media screen and (min-width: 769px){
+                font-size: 3.75em;
             }
         }
 
-        h2, h3 {
-            margin-bottom: 1rem;
-
-            @media (min-width: 768px){
-                margin-bottom: 2rem;
-                font-size: 2em;
-            }
-            @media (min-width: 992px){
-                font-size: 2.4em;
-            }
+        .box-text {
+            font-family: 'Rock Salt', serif;
+            font-size: 4em;
+            margin:0 0 -4rem;
+            transition: all ease-out .25s;
         }
 
-        p {
-            margin-bottom: 1rem;
+        .box-button {
+            opacity: 0;
+            display: inline-block;
+            padding: 1rem 1.5rem .75rem;
+            border: 2px solid $white;
+            margin: 1rem 0 0;
+            font-size: 2em;
+            transition: all ease-in .5s;
+            background-color: $transteal;
+            font-family: 'Bebas Neue', sans-serif;
+            line-height: 1em;
+        }
 
-            @media (min-width: 768px){
-                margin-bottom: 2rem;
+        &:hover {
+            .overlay {
+                opacity: .2;
             }
 
-        }
-    }
+            .box-text {
+                margin:0 0 1rem;
+            }
 
-    .box-container {
-        padding: 0;
-        @media (min-width: 576px){
-            padding: 1rem ;
-        }
-        @media (min-width: 768px){
-            padding: 2rem;
+            .box-button {
+                margin-top: 1rem;
+                opacity: 1;
+            }
         }
     }
 }
@@ -460,7 +852,6 @@ article h2,
 // Footer
 footer {
     color: #FFF;
-    border-top: 5px solid $primary;
     position: relative;
 
     a {
@@ -472,45 +863,21 @@ footer {
         }
     }
 
-    h4 {
-        margin: 1rem 0 0;
-        padding: 1rem 0;
-        text-transform: uppercase;
-        font-size: 14px;
+    .footer-headline {
+        font-family: 'Rock Salt', sans-serif;
+        font-size: .9em;
+        text-align: center;
     }
 
-    .footer-menu {
+    .footer-phone {
         margin: 0;
-        padding: 1rem 0;
 
-        .nav-item {
-            list-style: none;
-            margin: 1.25rem 0;
-
-            a {
-                font-weight: 600;
-                font-size: 14px;
-                padding: 10px 0;
-                text-transform: uppercase;
-                display: inline-block;
-                border-bottom: 1px solid transparent;
-                transition: border-color .5s linear; 
-
-                &:hover {
-                    color: #FFF;
-                    border-color: rgba(255,255,255,.5);
-                }
-            }
-        }
-    }
-
-    .contact-form {
-        @media (min-width: 768px){
-            padding: 1rem;
-
-            .form-group {
-                padding-bottom: .75rem;
-            }
+        a {
+            font-family: 'Bebas Neue', sans-serif;
+            font-size: 2em;
+            line-height: 1em;
+            margin-top: .25rem;
+            display: inline-block;
         }
     }
 
@@ -526,24 +893,12 @@ footer {
             }
         }
     }
-
-    .broker-logo {
-        padding: 3rem 0;
-
-        img {
-            max-width: 150px;
-        } 
-    }
     
     .copyright {
         color: #FFF;
         font-size: 12px;
         margin: 0;
         line-height: 1.5rem;
-    }
-
-    hr {
-        border-color: #555;
     }
 
     .siteby {
@@ -572,70 +927,5 @@ footer {
         max-width: 1920px;
         padding: 0 60px;
         margin: 0 auto;
-    }
-}
-
-#app {
-    .listing {
-        height: 100%;
-        box-shadow: 0 0 1rem rgba(0,0,0,.1);
-
-        .status-flag {
-            color: $white;
-            background-color: $info;
-            position: absolute;
-            z-index: 4;
-            font-size: .9em;
-            padding: .25rem .5rem;
-            margin-top: .5rem;
-            transform: skew(-8deg);
-            margin-left: -.5rem;
-            box-shadow: 0 0 .5rem rgba(0,0,0,.3);
-        }
-        .main-image {
-            background-size: cover !important;
-            border-bottom: 1px solid #dedede;
-        }
-        .listing-link {
-            left: 0; right: 0; bottom: 0; top: 0;
-            z-index: 5;
-
-            &:hover {
-                border-bottom: .25rem $primary solid;
-            }
-        }
-
-        .mls-number {
-            color: rgba(0,0,0,.4);
-            font-size: .8rem;
-        }
-    }
-
-    .sort-form,
-    .search-bar {
-        select, .btn {
-            box-shadow: 0 0 1rem rgba(0,0,0,.1);
-        }
-    }
-
-    .pager {
-        nav {
-            box-shadow: 0 0 1rem rgba(0,0,0,.1);
-        }
-    }
-
-    .listing-detail {
-        box-shadow: 0 0 1rem rgba(0,0,0,.1);
-        height:100%;
-    }
-
-    .VueCarousel-navigation-button {
-        &.VueCarousel-navigation-prev {
-            padding-right: 0 !important;
-        }
-
-        &.VueCarousel-navigation-next {
-            padding-left: 0 !important;
-        }
     }
 }

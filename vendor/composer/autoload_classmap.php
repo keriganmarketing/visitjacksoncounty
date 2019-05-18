@@ -441,6 +441,7 @@ return array(
     'Illuminate\\View\\Compilers\\Concerns\\CompilesComponents' => $vendorDir . '/illuminate/view/Compilers/Concerns/CompilesComponents.php',
     'Illuminate\\View\\Compilers\\Concerns\\CompilesConditionals' => $vendorDir . '/illuminate/view/Compilers/Concerns/CompilesConditionals.php',
     'Illuminate\\View\\Compilers\\Concerns\\CompilesEchos' => $vendorDir . '/illuminate/view/Compilers/Concerns/CompilesEchos.php',
+    'Illuminate\\View\\Compilers\\Concerns\\CompilesErrors' => $vendorDir . '/illuminate/view/Compilers/Concerns/CompilesErrors.php',
     'Illuminate\\View\\Compilers\\Concerns\\CompilesHelpers' => $vendorDir . '/illuminate/view/Compilers/Concerns/CompilesHelpers.php',
     'Illuminate\\View\\Compilers\\Concerns\\CompilesIncludes' => $vendorDir . '/illuminate/view/Compilers/Concerns/CompilesIncludes.php',
     'Illuminate\\View\\Compilers\\Concerns\\CompilesInjections' => $vendorDir . '/illuminate/view/Compilers/Concerns/CompilesInjections.php',

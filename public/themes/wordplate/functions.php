@@ -2,11 +2,10 @@
 
 declare(strict_types=1);
 
-use KeriganSolutions\KMARealtor;
-use Includes\Modules\KMAMail;
-
 require template_path('includes/ThemeControl.php');
-require('post-types/contact_request.php');
+require('post-types/venue.php');
+require('post-types/event.php');
+
 $wordplate = new ThemeControl();
 
 // Set theme defaults.
@@ -43,7 +42,9 @@ add_action('after_setup_theme', function () {
 
 // Enqueue and register scripts the right way.
 add_action('wp_enqueue_scripts', function () {
-    wp_deregister_script('jquery');
+    if(!is_admin()){
+        wp_deregister_script('jquery');
+    }
     wp_enqueue_style('wordplate', mix('styles/main.css'), [], null);
     wp_register_script('wordplate', mix('scripts/app.js'), '', '', true);
     wp_enqueue_script('wordplate', mix('scripts/app.js'), '', '', true);
@@ -53,33 +54,6 @@ add_action('wp_enqueue_scripts', function () {
 add_filter('bladerunner/cache/path', function () {
     return '../../uploads/.cache';
 });
-
-
-//[quicksearch]
-function quicksearch_func( $atts ){
-    ob_start();
-    ?>
-    <div class="quick-search p-4 p-sm-0 p-md-4 d-inline-block text-white">
-        <form action="property-search">
-        <input name="q" value="search" type="hidden" >
-        <div class="row align-items-center no-gutters">
-            <div class="col-12 col-sm-5 col-md-auto mb-2 pr-sm-2 pr-md-0">
-                <property-type></property-type>
-            </div>
-            <div class="d-none d-md-block col-auto mb-2 px-4"><span class="text-shadow">IN</span></div>
-            <div class="col-9 col-sm-5 col-md-auto mb-2 pr-4">
-                <area-field></area-field>
-            </div>
-            <div class="col-3 col-sm col-md-auto mb-2">
-                <button class="btn btn-block btn-primary">GO</button>
-            </div>
-        </div>
-        </form>
-    </div>
-    <?php
-	return ob_get_clean();
-}
-add_shortcode( 'quicksearch', 'quicksearch_func' );
 
 function getVideoImageFromEmbed($postContent){
     if($postContent == ''){
@@ -113,24 +87,3 @@ add_filter('wpseo_opengraph_image', function () {
         return getVideoImageFromEmbed($post->post_content);
     }
 });
-
-//[quicksearch]
-function testimonial_func( $atts ){
-    $testimonials = (new KeriganSolutions\KMATestimonials\Testimonial)->queryTestimonials(false, -1, 'date', 'ASC', 50);
-
-    ob_start();
-    ?>
-    <div class="testimonials">
-        <?php foreach($testimonials as $testimonial){ ?>
-            <div class="testimonial border-bottom py-3" >
-                <a class="pad-anchor" name="<?php echo $testimonial->ID; ?>"></a>
-                <p><?php echo $testimonial->excerpt; ?> 
-                <a href="<?php echo get_permalink($testimonial->ID); ?>">read more.</a></p>
-                <p class="byline">&mdash; <?php echo $testimonial->byline; ?></p>
-            </div>
-        <?php } ?>
-    </div>
-    <?php
-	return ob_get_clean();
-}
-add_shortcode( 'testimonials', 'testimonial_func' );
